@@ -14,13 +14,14 @@ services:
       MYSQL_PASSWORD: "pass"
     ports: 
       - "3306:3306"
+      
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin
+    restart: always
     container_name: pma
     links:
       - db
-    environment:
-      PMA_ARBITRARY: 1
-    restart: always
     ports:
-      - 8081:80
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
